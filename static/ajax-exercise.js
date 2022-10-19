@@ -73,3 +73,18 @@ function orderMelons(evt) {
 
 
 document.querySelector('#order-form').addEventListener('submit', orderMelons);
+
+
+document.querySelector('#get-dog-image').addEventListener('click', () =>{
+  const url = `https://dog.ceo/api/breeds/image/random`;
+
+  fetch(url)
+  .then((response) => response.json())
+  .then((jsonData) => {
+    //console.log("dog", jsonData);
+    const imageURL = jsonData.message;
+    document
+    .querySelector('#dog-image')
+    .insertAdjacentHTML('beforeend', `<div><img src=${imageURL}></div>`);
+  });
+});
